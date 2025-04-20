@@ -1,0 +1,55 @@
+/* body{
+    background-color: red;
+}
+
+h1{
+    color:white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+@font-face {
+    font-family: vazir;
+    src: url(../Vazirmatn-Bold.woff2);
+}
+
+#first{
+    font-family: vazir;
+    font-size: 23px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#second{
+    text-decoration: line-through;
+    text-align: center;
+}
+
+#f{
+    background-color: yellow;
+    
+}
+
+#g{
+    color: green;
+}
+
+.a{
+    font-size: 34px;
+}
+
+
+.s{
+color:white
+} */
+
+a{
+    color: black;
+}
+a:visited{
+    color:blue
+}
+a:hover{
+    font-size: 20px;
+    color:purple
+}

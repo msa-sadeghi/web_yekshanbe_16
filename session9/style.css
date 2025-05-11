@@ -1,0 +1,56 @@
+/* fieldset{
+    background-color: #AAAAFF;
+}
+
+label{
+    width: 5em;
+    float: left;
+    text-align: right;
+    margin-right: .5em;
+    clear: left;
+}
+
+input{
+    background-color: #CCCCFF;
+    float: left;
+}
+
+button{
+    float: left;
+    width: 10em;
+    margin-left: 7em;
+    margin-top: 1em;
+    background-color: #0000cc;
+    color: #fff;
+    clear: both;
+} */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#head{
+    border: 3px solid red;
+    background-color: yellowgreen;
+    text-align: center;
+}
+#left{
+    float: right;
+    border: 3px solid red;
+    background-color: yellow;
+    width: 20%;
+    height: 80vh;
+}
+#right{
+    width: 80%;
+    float: right;
+    border: 3px solid red;
+    background-color: green;
+    height: 80vh;
+}
+#footer{
+    text-align: center;
+    clear: both;
+    border: 3px solid red;
+    background-color: orange;
+}

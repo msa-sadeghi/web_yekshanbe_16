@@ -1,0 +1,157 @@
+/* #blackBox{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#blueBox{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    z-index: 1;
+}
+
+.parent{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    position: relative;
+    top: 300px;
+    left: 50%;
+}
+
+.child{
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+end of section one */
+
+/* section two */
+
+/* div{
+    border: 1px solid black;
+}
+
+#a{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#b, #c, #d{
+    width: 30%;
+}
+
+#d{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+#e, #f{
+    height: 50%;
+} */
+
+/* body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.parent{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.child{
+    width: 50px;
+    height: 50px;
+    background-color: green;
+ 
+} */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container-fluid{
+    width: 100%;
+    height: 70px;
+}
+
+
+.main-color{
+    background-color: #949494;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container .bell{
+    background-color: #949494;
+    display: inline-block;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.container .input-container{
+    width: 50%;
+    position: relative;
+}
+.container .input-container input{
+    background-color: #f0eaea;
+    width: 100%;
+    height: 30px;
+    border-radius: 6px;
+    direction: rtl;
+    padding-right: 60px;
+    border: none;
+    outline: none;
+}
+
+.container .input-container i {
+    position: absolute;
+}
+
+.container .input-container i:first-child{
+    left: 40px;
+    top: 23%;
+}
+.container .input-container i:last-child{
+    right: 40px;
+    top: 23%;
+}
+@font-face {
+    font-family: vazir;
+    src: url(../Vazirmatn-Bold.woff2);
+}
+.container .input-container input::placeholder{
+font-family: vazir;
+padding-right: 60px;
+}

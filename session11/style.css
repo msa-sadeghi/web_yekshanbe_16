@@ -1,0 +1,17 @@
+.sample{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    /* margin: 0 auto; */
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}

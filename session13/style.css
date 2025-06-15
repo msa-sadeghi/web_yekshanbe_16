@@ -1,0 +1,18 @@
+ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width:600px) {
+    body{
+        background-color: red;
+    }
+    li.others{
+        display: none;
+    }
+    ul{
+        justify-content: space-around;
+    }
+}

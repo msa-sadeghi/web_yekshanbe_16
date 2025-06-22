@@ -1,8 +1,25 @@
-.circles{
-    display: flex;
-    padding: 10px 0px 0px 10px;
+@font-face {
+    font-family: vazir;
+    src: url(../Vazirmatn-Bold.woff2);
 }
 
+
+.circles{
+    display: flex;
+    padding: 10px;
+}
+body{
+    direction:rtl;
+    font-family: vazir;
+}
+
+.container nav a{
+    padding: 10px;
+    display: inline-block;
+}
+.container nav a:hover{
+    border-bottom: 3px solid red;
+}
 .circle{
     width: 20px;
     height: 20px;
@@ -20,4 +37,24 @@
 
 .circles div:nth-child(3){
     background-color: green;
+}
+.card .card-body img{
+    transition: all 2s ease;
+}
+.card .card-body img:hover{
+    filter: brightness(78%);
+    transform: scale(110%) rotate(10deg);
+    cursor: pointer;
+}
+.main .card .buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px 0 20px;
+}
+.main .card .buttons button{
+    font-family: vazir;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
 }

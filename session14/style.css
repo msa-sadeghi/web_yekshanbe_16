@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: myfont;
+}
+@font-face {
+    font-family: myfont;
+    src: url(../Vazirmatn-Bold.woff2);
+}
+header{
+    background-color: darkslateblue;
+    text-align: center;
+    color: white;
+    line-height: 50px;
+    transition: transform 0.5s ease;
+}
+input[type="checkbox"]{
+    opacity: 0;
+}
+i, input[type="checkbox"]{
+    position: absolute;
+    top: 2%;
+    left: 20%;;
+}
+input[type="checkbox"]{
+    z-index: 1;
+}
+input[type="checkbox"]:checked ~ header{
+    transform: translateY(-100%);
+}
+input[type="checkbox"]:checked ~ i{
+    display: none;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    transition: transform 0.5s ease;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+input[type="checkbox"]:checked ~ nav{
+    transform: translateY(-50px);
+}

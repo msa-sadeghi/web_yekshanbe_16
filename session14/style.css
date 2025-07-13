@@ -15,10 +15,10 @@ header{
     line-height: 50px;
     transition: transform 0.5s ease;
 }
-input[type="checkbox"]{
+body > input[type="checkbox"]{
     opacity: 0;
 }
-i, input[type="checkbox"]{
+i, body > input[type="checkbox"]{
     position: absolute;
     top: 2%;
     left: 20%;;
@@ -34,8 +34,9 @@ input[type="checkbox"]:checked ~ i{
 }
 nav{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     transition: transform 0.5s ease;
+    position: relative;
 }
 nav ul {
     display: flex;
@@ -45,3 +46,49 @@ nav ul {
 input[type="checkbox"]:checked ~ nav{
     transform: translateY(-50px);
 }
+
+body{
+    direction: rtl;
+}
+
+nav button{
+    padding: 5px 15px;
+    border: none;
+    border-right: 1px solid gray;
+    background-color: transparent;
+}
+
+nav button span{
+    margin-right: 10px;
+}
+nav label.fa-bars{
+    opacity: 0;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+input#burger{
+    display: none;
+}
+
+@media screen and (max-width:600px){
+    nav ul{
+        display: none;
+    }
+    input#burger:checked ~ ul{
+    background-color: antiquewhite;
+    position: absolute;
+    display: block;
+    top: 100%;
+    width: 100%;
+    padding: 20px;
+}
+    input#burger:checked ~ ul li{
+        width: 100%;
+        padding: 10px;
+    }
+        nav label.fa-bars{
+        opacity: 1;
+    }
+}
+

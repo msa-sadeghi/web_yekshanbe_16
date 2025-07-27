@@ -1,0 +1,52 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    padding: 0 40px;
+    width: 100%;
+    background-color: #efefef;
+    line-height: 100px;
+}
+.container nav{
+    height: 100%;
+}
+
+.container nav ul{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    height: 100%;
+    position: relative;
+}
+.container nav ul li{
+    cursor: pointer;
+    z-index: 1;
+}
+div.move{
+    position: absolute;
+    width: 105px;
+    background-color: tomato;
+    height: 100%;
+    left: -40px;
+    top: 0;
+    transition: left 1s ease;
+    border-radius: 0 10px 10px 0;
+}
+nav ul li:nth-child(2):hover ~ div.move{
+    left:64px;
+    width: 85px;
+    border-radius: 10px;
+}
+nav ul li:nth-child(3):hover ~ div.move{
+    left:149px;
+    width: 90px;
+    border-radius: 10px;
+}
+nav ul li:nth-child(4):hover ~ div.move{
+    left:239px;
+    width: 60px;
+    border-radius: 10px;
+}

@@ -1,0 +1,24 @@
+@font-face {
+    font-family: vazir;
+    src: url(../../Vazirmatn-Bold.woff2);
+}
+.container{
+    direction: rtl;
+    max-width: 600px;
+    background-color: gray;
+    font-family: vazir;
+    margin: auto;
+}
+.header{
+    text-align: center;
+    font-size: 24px;
+}
+table{
+    width: 100%;
+}
+thead{
+    background-color: orange;
+}
+tbody{
+    background-color: tomato;
+}

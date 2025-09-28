@@ -11,4 +11,11 @@
         position: fixed;
         left: -250px;
     }
+
+    .dropdown-menu{
+        position:absolute !important;
+        top: 100%;
+        right: 0;
+        width: 100%;
+    }
 }

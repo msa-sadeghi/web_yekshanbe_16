@@ -1,0 +1,14 @@
+.sidebar{
+    min-height: 100vh;
+    width: 250px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+
+
+@media screen and (max-width:600px) {
+    .sidebar{
+        position: fixed;
+        left: -250px;
+    }
+}

@@ -1,6 +1,8 @@
-let firstName = "nikan";
-let lastName = "ahmadi"
-console.log("this is a test")
-console.log("this is a blalal")
-console.log("hello " + firstName + " " + lastName);
-console.log(`hello ${firstName} ${lastName}`);
+let divElement = document.getElementById("welcomeMessage")
+
+
+function showWelcome(){
+    let username = prompt("لطفا اسم خود را وارد نمائید")
+    divElement.textContent = `سلام ${username} چطوری؟`
+    divElement.style.display = "block"
+}

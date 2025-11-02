@@ -1,64 +1,60 @@
-// let divElement = document.getElementById("welcomeMessage")
-
-
-// function showWelcome1(){
-//     // let username = prompt("لطفا اسم خود را وارد نمائید")
-//     // let age = prompt("لطفا سن خود را وارد نمائید")
-//     // divElement.textContent = `سلام ${username}   سنت ${age}چطوری؟`
-//     divElement.textContent = "salaam"
-//     divElement.style.display = "block"
-// }
-// function showWelcome2(){
-    
-//     divElement.textContent = "hi"
-//     divElement.style.display = "block"
-// }
-// function showWelcome3(){
-//     divElement.textContent = "hello"
-//     divElement.style.display = "block"
+// let x = 0
+// x = x + 1
+// x += 1
+// x++
+// console.log(x)
+// for(let i = 0; i < 3; i++){
+//     console.log(`number ${i}`)
 // }
 
-
-
-// let x1 = Number(prompt("enter the number :"))
-// let x2 = Number(prompt("enter the number :"))
-// console.log(x1 + x2)
-
-// let x3 = +prompt("enter the number :")
-// let x4 = +prompt("enter the number :")
-// console.log(x4 + x3)
-
-
-// const x  = 12
-
-
-// var y = 12
-// let z = 14
-
-// function a(){
-//     let xx = 12
+// let counter = 0
+// while(counter < 3){
+//     console.log(`item # ${counter}`)
+//     counter++
 // }
 
-// console.log(xx)
+// let username = "sara"
+// console.log(username[0])
 
-// if (1==1){
-//     let yy = 14
+// let username = 'sara'
+// console.log(username[0])
+
+// let username = `sara`
+// console.log(username[0])
+// console.log(username.length)
+// for(let j = 0; j < username.length;  j++){
+//     console.log(username[j])
 // }
 
-// console.log(yy)
+// let number = 123
+// let strNumber = number.toString()
+// console.log(typeof strNumber)
 
-// if (1==1){
-//     var yy = 14
+// let another = "123"
+// let numberAnother = Number(another)
+// console.log(typeof numberAnother)
+
+// true    false
+
+// let person = {
+//     username: "sara",
+//     password : "12345"
 // }
+// console.log(person.username)
+// console.log(person.password)
+// console.log(person['username'])
+// console.log(person['password'])
 
-// console.log(yy)
+let x  = 12
+let y = "12"
+console.log(x === y)
 
-const person = {
-    name : "reza",
-    age:17
-}
+//   and    or      &&     ||
 
-console.log(person.name)
-console.log(person["name"])
-
-console.log(typeof person)
+let  numbers = [1, 2, 3, 4, 5]
+let sum = 0
+numbers.forEach(function(n){
+    console.log(n)
+    sum += n
+})
+console.log(sum)

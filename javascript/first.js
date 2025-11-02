@@ -45,16 +45,36 @@
 // console.log(person['username'])
 // console.log(person['password'])
 
-let x  = 12
-let y = "12"
-console.log(x === y)
+// let x  = 12
+// let y = "12"
+// console.log(x === y)
 
-//   and    or      &&     ||
+// //   and    or      &&     ||
 
-let  numbers = [1, 2, 3, 4, 5]
-let sum = 0
-numbers.forEach(function(n){
-    console.log(n)
-    sum += n
-})
-console.log(sum)
+// let  numbers = [1, 2, 3, 4, 5]
+// let sum = 0
+// numbers.forEach(function(n){
+//     console.log(n)
+//     sum += n
+// })
+// console.log(sum)
+
+let tempInput = document.getElementById("tempInput")
+let tempFrom = document.getElementById("tempFrom").value
+let tempTo = document.getElementById("tempTo").value
+let tempResult = document.getElementById("tempResult")
+
+function convertTemperature(){
+    let val = tempInput.value
+    let result
+    if(tempFrom ==  tempTo){
+        result = val
+    }else if (tempFrom === "celsius"){
+        if (tempTo === "fahrenheit"){
+            result = val  *2 
+        }
+    }
+    console.log(tempFrom, tempTo)
+    tempResult.textContent = result
+    tempResult.style.display = "block"
+}

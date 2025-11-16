@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامه وضعیت آب و هوا</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        
+        .input-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Tahoma', sans-serif;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .result-section {
+            background: #e3f2fd;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .result-section.show {
+            display: block;
+        }
+        
+        .weather-icon {
+            text-align: center;
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .temperature {
+            text-align: center;
+            font-size: 48px;
+            color: #1976d2;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .description {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .detail-value {
+            color: #333;
+        }
+        
+        .advice {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-right: 4px solid #ffc107;
+        }
+        
+        .advice-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        
+        .advice-text {
+            color: #856404;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌤️ برنامه وضعیت آب و هوا</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="temperature">🌡️ دمای هوا (سلسیوس):</label>
+                <input type="number" id="temperature" placeholder="مثال: 25">
+            </div>
+            
+            <div class="input-group">
+                <label for="humidity">💧 رطوبت (درصد):</label>
+                <input type="number" id="humidity" min="0" max="100" placeholder="مثال: 60">
+            </div>
+            
+            <div class="input-group">
+                <label for="windSpeed">🌬️ سرعت باد (کیلومتر بر ساعت):</label>
+                <input type="number" id="windSpeed" min="0" placeholder="مثال: 15">
+            </div>
+            
+            <div class="input-group">
+                <label for="condition">☁️ وضعیت آسمان:</label>
+                <select id="condition">
+                    <option value="clear">آفتابی</option>
+                    <option value="cloudy">ابری</option>
+                    <option value="rainy">بارانی</option>
+                    <option value="snowy">برفی</option>
+                    <option value="stormy">طوفانی</option>
+                </select>
+            </div>
+            
+            <button onclick="analyzeWeather()">🔍 تحلیل آب و هوا</button>
+        </div>
+        
+        <div id="resultSection" class="result-section">
+            <div id="weatherIcon" class="weather-icon"></div>
+            <div id="temperatureDisplay" class="temperature"></div>
+            <div id="descriptionDisplay" class="description"></div>
+            
+            <div class="details">
+                <div class="detail-item">
+                    <span class="detail-label">وضعیت دما:</span>
+                    <span id="tempStatus" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">وضعیت رطوبت:</span>
+                    <span id="humidityStatus" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">وضعیت باد:</span>
+                    <span id="windStatus" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">شاخص راحتی:</span>
+                    <span id="comfortIndex" class="detail-value"></span>
+                </div>
+            </div>
+            
+            <div class="advice">
+                <div class="advice-title">💡 توصیه:</div>
+                <div id="adviceText" class="advice-text"></div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

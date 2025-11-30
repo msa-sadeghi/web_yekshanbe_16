@@ -1,105 +1,39 @@
-// let score = 0
-// console.log(score)
-// score = score + 1
-// console.log(score)
-// score += 1
-// console.log(score)
-// score++
-// console.log(score)
+// let arr1 = ["ali", "sara", "nik"]
+// console.log(arr1.length)
+// arr1.push("saber")
+// arr1.forEach(item => console.log(item))
 
-// console.log("123" == 123)
-// console.log("123" === 123)
+// let arr2 = new Array(3)
+// arr2[0] = "a"
+// arr2[1] = "b"
+// arr2[2] = "c"
+// console.log(arr2.length)
+// arr2.shift()
+// arr2.pop()
+// arr2.forEach(item => console.log(item))
 
-// &&     ||    !
+// let arr3 = new Array("milk", "apple", "another")
+// console.log(arr3.length)
+// arr3.unshift("banana")
 
-// let age = 17
+// arr3.forEach(item => console.log(item))
 
-// if(age >= 15 && age <= 23){
-//     console.log("blalalal")
-// }
-// if(age >= 15 || age <= 23){
-//     console.log("blalalal")
-// }
 
-// let isLoggedIn = false
-// if(!isLoggedIn){
-//     console.log("yes")
-// }
+let names = ["abtin", "soshian", "paniz", "arash"]
+for(let i =0; i < names.length;  i++){
+    console.log(names[i])
+}
+console.log("------------------")
 
-// let isLoggedIn = true
-// if(isLoggedIn){
-//     document.body.innerHTML = "<h1>Welcome</h1>"
-// }else{
-//     document.body.innerHTML = "<h1>Not LoggedIn</h1>"
-// }
+names.forEach(n => console.log(n))
+console.log("------------------")
 
-// isLoggedIn ?  document.body.innerHTML =
-//  "<h1>Welcome</h1>" : document.body.innerHTML =
-//   "<h1>Not LoggedIn</h1>"
+for(let n of names){
+    console.log(n)
+}
+console.log("------------------")
 
-// let dayNumber = 1
-// switch(dayNumber){
-//     case 1:
-//         console.log("sat")
-//         break
-//     case 2:
-//         console.log("sun")
-//         break
-//     case 3:
-//         console.log("mon")
-//         break
-//     case 4:
-//         console.log("tue")
-//         break
-//     case 5:
-//         console.log("wed")
-//         break
-//     case 6:
-//         console.log("thurs")
-//         break
-//     case 7:
-//         console.log("fri")
-//         break
-//     default:
-//         console.log("not valid number")
-
-// }
-
-// let numbers = [1,2,3,4,5,6,7,8,9]
-// let s = 0
-// for(let i = 0; i < numbers.length; i++){
-//     s += numbers[i]
-// }
-// console.log(s)
-// s  = 0
-// numbers.forEach(function(n){
-//     s += n
-// })
-// console.log(s)
-
-// let i =  0
-// s = 0
-// while(i < numbers.length){
-//     s += numbers[i]
-//     i++
-// }
-// console.log(s)
-
-// s = 0
-// i = 0
-// do{
-//     s += numbers[i]
-//     i++
-// }while(i < numbers.length)
-// console.log(s)
-
-let items = ["sport", "food", "jobs", "math", "algebra"]
-
-let result = "<ul>"
-
-items.forEach(function(x){
-    result += "<li>" + x + "</li>"
-})
-result += "</ul>"
-
-document.body.innerHTML = result
+for(let i in names){
+    console.log(names[i])
+}
+console.log("------------------")

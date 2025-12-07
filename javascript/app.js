@@ -39,16 +39,38 @@ function renderList(){
         </div>
 
         <div class="item-actions">
-            <button class="btn-success btn-small">
+            <button class="btn-success btn-small"
+            onclick=togglePurchased(${item.id})
+            >
                     ${item.purchased ? 'بازگشت' : 'خریداری شد'}
             </button>
 
 
-            <button class="btn-danger btn-small">
+            <button class="btn-danger btn-small"
+            onclick=deleteItem(${index})
+            >
             حذف
             </button>
         </div>
     </div>
     `).join("")
     listSection.innerHTML = itemsHTML
+}
+
+function updateStats(){
+
+}
+
+function togglePurchased(id){
+    allProducts.forEach(item => {
+        if(item.id === id){
+            item.purchased = !item.purchased
+        }
+    })
+    renderList()
+}
+
+function deleteItem(index){
+     allProducts.splice(index, 1)
+    renderList()
 }

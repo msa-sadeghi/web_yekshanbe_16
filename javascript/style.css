@@ -1,3 +1,38 @@
-.red{
-    color: red;
-}
+  body {
+            font-family: Tahoma;
+            padding: 20px;
+            transition: all 0.3s;
+            direction: rtl;
+        }
+        
+        body.dark {
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        body.light {
+            background: white;
+            color: black;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .card {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .light .card {
+            background: #f0f0f0;
+        }
+        
+        .dark .card {
+            background: #333;
+        }

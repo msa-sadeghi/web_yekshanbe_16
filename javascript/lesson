@@ -1,0 +1,14 @@
+document
+  └── html
+      ├── head
+      │   ├── title
+      │   └── meta
+      └── body
+          ├── header
+          │   └── h1
+          ├── main
+          │   ├── p
+          │   └── div
+          │       ├── button
+          │       └── span
+          └── footer

@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>لیست دینامیک</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <body class="light">
-    <h1>سیستم تم</h1>
-    <button onclick="toggleTheme()">🌓 تغییر تم</button>
+    <h1>لیست کارها</h1>
+    <input type="text" id="todoInput" placeholder="کار جدید...">
+    <button onclick="addTodo()">➕ افزودن</button>
     
-    <div class="card">
-        <h2>کارت نمونه</h2>
-        <p>این یک کارت نمونه است که رنگ آن با تم تغییر می‌کند.</p>
-    </div>
+    <ul id="todoList"></ul>
     
-   
-</body>
     <script src="app.js"></script>
+ 
 </body>
 </html>

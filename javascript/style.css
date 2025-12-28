@@ -1,38 +1,18 @@
-  body {
-            font-family: Tahoma;
-            padding: 20px;
-            transition: all 0.3s;
-            direction: rtl;
+  body { font-family: Tahoma; padding: 20px; }
+        #todoList {
+            list-style: none;
+            padding: 0;
         }
-        
-        body.dark {
-            background: #1a1a1a;
-            color: white;
-        }
-        
-        body.light {
-            background: white;
-            color: black;
-        }
-        
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        
-        .card {
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        
-        .light .card {
+        .todo-item {
+            padding: 10px;
+            margin: 5px 0;
             background: #f0f0f0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .dark .card {
-            background: #333;
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
         }

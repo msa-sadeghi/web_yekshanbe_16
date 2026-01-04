@@ -1,17 +1,33 @@
-let todoInput = document.getElementById("todoInput")
-let todoList = document.getElementById("todoList")
+const nameElement = document.getElementById("name")
+const nameError = document.getElementById("nameError")
 
-function addTodo(){
-    let newLi = document.createElement("li")
-    newLi.className = "todo-item"
-    let newSpan = document.createElement('span')
-    newSpan.innerHTML = todoInput.value
-    let newI = document.createElement("i")
-    newI.className= "fa-regular fa-trash-can"
-    newI.addEventListener('click', (e)=>{
-        newLi.remove()
-    })
-    newLi.append(newSpan, newI)
-    todoList.append(newLi)
-    todoInput.value = ''
-}
+nameElement.addEventListener('input', (e)=>{
+    let nameLength = nameElement.value.length
+    if(nameLength <  3){
+        nameError.style.display = "block"
+        nameElement.classList.add("error")
+    }else{
+        nameError.style.display = "none"
+        nameElement.classList.remove("error")
+
+    }
+
+})
+const emailElement = document.getElementById("email")
+const emailError = document.getElementById("emailError")
+
+emailElement.addEventListener('input', (e)=>{
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    emailValue = emailElement.value
+    if(!pattern.test(emailValue)){
+        emailError.style.display = "block"
+        emailElement.classList.add("error")
+    }else{
+        emailError.style.display = "none"
+        emailElement.classList.remove("error")
+
+    }
+
+})
+
+

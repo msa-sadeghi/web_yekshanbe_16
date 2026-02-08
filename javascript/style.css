@@ -1,50 +1,41 @@
-   body { font-family: Tahoma; padding: 20px; max-width: 600px; margin: 0 auto; }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            font-family: Tahoma;
-        }
-        input:focus {
-            border-color: #667eea;
-            outline: none;
-        }
-        input.error {
-            border-color: #f44336;
-        }
-        input.valid {
-            border-color: #4caf50;
-        }
-        .error-message {
-            color: #f44336;
-            font-size: 14px;
-            margin-top: 5px;
-            display: none;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .info {
-            padding: 15px;
-            background: #e3f2fd;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-        }
+.loading{
+    width: 100px;
+    height: 100px;
+    border: 10px solid gray;
+    border-left: 10px solid red;
+    animation: loading 1s infinite;
+    border-radius: 100%;
+}
+
+@keyframes loading {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: start;
+}
+
+.card{
+    background-color: #efefef;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.idSpan{
+    background-color: cyan;
+    border-radius: 50%;
+    padding: 7px 12px;
+}

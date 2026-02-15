@@ -2,21 +2,62 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Destructuring در عمل</title>
-    <style>
-        body { font-family: Tahoma; padding: 20px; }
-        .user-card {
-            background: #f0f0f0;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت وظایف مدرن</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>نمایش کاربران با Destructuring</h1>
-    <div id="users"></div>
+    <div class="container">
+        <div class="header">
+            <h1>📝 مدیریت وظایف مدرن</h1>
+            
+            <div class="add-task">
+                <input type="text" id="taskInput" placeholder="وظیفه جدید را وارد کنید...">
+                <select id="prioritySelect">
+                    <option value="پایین">اولویت پایین</option>
+                    <option value="متوسط" selected>اولویت متوسط</option>
+                    <option value="بالا">اولویت بالا</option>
+                </select>
+                <button onclick="addTask()">➕ افزودن</button>
+            </div>
+            
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterTasks('all')">همه</button>
+                <button class="filter-btn" onclick="filterTasks('active')">فعال</button>
+                <button class="filter-btn" onclick="filterTasks('completed')">انجام شده</button>
+                <button class="filter-btn" onclick="filterTasks('بالا')">اولویت بالا</button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalTasks">0</div>
+                    <div class="stat-label">کل وظایف</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="activeTasks">0</div>
+                    <div class="stat-label">فعال</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="completedTasks">0</div>
+                    <div class="stat-label">انجام شده</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="completionRate">0%</div>
+                    <div class="stat-label">درصد پیشرفت</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tasks-container" id="tasksContainer">
+            <div class="empty-state">
+                <div class="empty-icon">📋</div>
+                <p>هیچ وظیفه‌ای وجود ندارد</p>
+                <p style="font-size: 14px; margin-top: 10px;">اولین وظیفه خود را اضافه کنید!</p>
+            </div>
+        </div>
+    </div>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
+   
 </body>
 </html>

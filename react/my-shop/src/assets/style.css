@@ -1,0 +1,27 @@
+form{
+    padding: 20px;
+    background-color: #efefef;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+input{
+    padding: 10px 55px;
+    border-radius: 12px;
+    border: none;
+}
+
+button{
+    padding: 10px 55px;
+    border-radius: 12px;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 1s ease-in;
+}
+button:hover{
+    transform: scale(1.2);
+}

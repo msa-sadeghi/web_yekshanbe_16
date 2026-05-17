@@ -1,8 +1,13 @@
-import CheckoutForm from "./compontents/CheckoutForm"
+import Header from "./compontents/Header"
+import { CardProvider } from "./compontents/CardProvider"
+import Card from "./compontents/Card"
 function App(){
     return(
       <div>
-       <CheckoutForm/>
+        <CardProvider>
+          <Header/>
+          <Card/>
+        </CardProvider>
       </div>
     )
 }

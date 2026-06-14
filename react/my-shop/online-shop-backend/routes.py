@@ -9,7 +9,7 @@ products_routes = Blueprint("products", __name__)
 @products_routes.route("/products", methods=["GET"])
 def get_products():
     page = request.args.get("page", 1, type=int)
-    per_page = request.args.get("per_page", 10, type=int)
+    per_page = request.args.get("per_page", 20, type=int)
 
     if per_page > 100:
         per_page = 100

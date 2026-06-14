@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import ProductCart from "./ProductCart";
 export default function ProductList() {
   const [products, setProducts] = useState([]);
 
@@ -25,13 +25,13 @@ export default function ProductList() {
       }
     }
     getData();
-  });
+  }, []);
 
   return (
     <div>
       {products.map((p) => (
         <div>
-          <h1>{p.name}</h1>
+          <ProductCart product={p} />
         </div>
       ))}
     </div>

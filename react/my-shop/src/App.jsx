@@ -1,16 +1,8 @@
-import Cart from "./compontents/Cart";
-import CartProvider from "./compontents/CartProvider";
-import Header from "./compontents/Header";
-import ProductList from "./compontents/ProductList";
-
+import RegistrationForm from "./compontents/RegistrationForm";
 function App() {
   return (
     <div>
-      <CartProvider>
-        <Header />
-        <Cart />
-        <ProductList />
-      </CartProvider>
+      <RegistrationForm />
     </div>
   );
 }

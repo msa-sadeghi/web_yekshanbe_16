@@ -1,4 +1,5 @@
 import RegistrationForm from "./compontents/RegistrationForm";
+
 function App() {
   return (
     <div>

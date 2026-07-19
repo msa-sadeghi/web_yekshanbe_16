@@ -1,9 +1,8 @@
-import RegistrationForm from "./compontents/RegistrationForm";
-
+import ShoppingCart from "./compontents/ShoppingCart";
 function App() {
   return (
     <div>
-      <RegistrationForm />
+      <ShoppingCart />
     </div>
   );
 }

@@ -1,8 +1,12 @@
-import ShoppingCart from "./compontents/ShoppingCart";
+import AutoFocusInput from "./compontents/AutoFocusInput";
+import ScrollToSection from "./compontents/ScrollToSection";
+import Timer from "./compontents/Timer";
 function App() {
   return (
     <div>
-      <ShoppingCart />
+      <AutoFocusInput />
+      <ScrollToSection />
+      <Timer />
     </div>
   );
 }

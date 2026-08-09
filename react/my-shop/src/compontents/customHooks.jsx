@@ -108,3 +108,203 @@ function ShoppingCart() {
     </div>
   )
 }
+
+
+function useToggle(initialValue = false) {
+  const [value, setValue] = useState(initialValue)
+  
+  const toggle = () => setValue(prev => !prev)
+  const setTrue = () => setValue(true)
+  const setFalse = () => setValue(false)
+  
+  return [value, { toggle, setTrue, setFalse }]
+}
+
+// استفاده
+function Modal() {
+  const [isOpen, { toggle, setFalse }] = useToggle(false)
+  
+  return (
+    <>
+      <button onClick={toggle}>باز کردن مودال</button>
+      
+      {isOpen && (
+        <div className="modal">
+          <h2>مودال</h2>
+          <button onClick={setFalse}>بستن</button>
+        </div>
+      )}
+    </>
+  )
+}
+
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value)
+  
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value)
+    }, delay)
+    
+    return () => {
+      clearTimeout(handler)
+    }
+  }, [value, delay])
+  
+  return debouncedValue
+}
+
+// استفاده برای جستجو
+function SearchProducts() {
+  const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
+  
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      // فقط بعد از 500ms توقف تایپ، جستجو انجام شود
+      searchProducts(debouncedSearchTerm)
+    }
+  }, [debouncedSearchTerm])
+  
+  return (
+    <input
+      type="text"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      placeholder="جستجوی محصولات..."
+    />
+  )
+}
+
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  })
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      })
+    }
+    
+    window.addEventListener('resize', handleResize)
+    
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+  
+  return windowSize
+}
+
+// استفاده
+function ResponsiveComponent() {
+  const { width } = useWindowSize()
+  
+  return (
+    <div>
+      {width < 768 ? (
+        <MobileMenu />
+      ) : (
+        <DesktopMenu />
+      )}
+    </div>
+  )
+}
+
+function useForm(initialValues, onSubmit) {
+  const [values, setValues] = useState(initialValues)
+  const [errors, setErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setValues({
+      ...values,
+      [name]: value
+    })
+    // پاک کردن خطای فیلد
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: null
+      })
+    }
+  }
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    try {
+      await onSubmit(values)
+      setValues(initialValues) // ریست فرم
+    } catch (error) {
+      setErrors({ submit: error.message })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+  
+  const reset = () => {
+    setValues(initialValues)
+    setErrors({})
+  }
+  
+  return {
+    values,
+    errors,
+    isSubmitting,
+    handleChange,
+    handleSubmit,
+    setErrors,
+    reset
+  }
+}
+
+// استفاده
+function ContactForm() {
+  const { values, errors, isSubmitting, handleChange, handleSubmit } = useForm(
+    { name: '', email: '', message: '' },
+    async (data) => {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      if (!response.ok) throw new Error('خطا در ارسال')
+    }
+  )
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        name="name"
+        value={values.name}
+        onChange={handleChange}
+        placeholder="نام"
+      />
+      
+      <input
+        name="email"
+        value={values.email}
+        onChange={handleChange}
+        placeholder="ایمیل"
+      />
+      
+      <textarea
+        name="message"
+        value={values.message}
+        onChange={handleChange}
+        placeholder="پیام"
+      />
+      
+      {errors.submit && <p>{errors.submit}</p>}
+      
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'در حال ارسال...' : 'ارسال'}
+      </button>
+    </form>
+  )
+}

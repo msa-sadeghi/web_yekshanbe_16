@@ -58,3 +58,53 @@ function ProductList() {
     </div>
   )
 }
+
+
+function useLocalStorage(key, initialValue) {
+  // دریافت مقدار اولیه از localStorage
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key)
+      return item ? JSON.parse(item) : initialValue
+    } catch (error) {
+      console.log(error)
+      return initialValue
+    }
+  })
+  
+  // تابع برای تنظیم مقدار
+  const setValue = (value) => {
+    try {
+      // اجازه به value که تابع باشد
+      const valueToStore = 
+        value instanceof Function ? value(storedValue) : value
+      
+      setStoredValue(valueToStore)
+      window.localStorage.setItem(key, JSON.stringify(valueToStore))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  return [storedValue, setValue]
+}
+
+// استفاده
+function ShoppingCart() {
+  const [cart, setCart] = useLocalStorage('cart', [])
+  
+  const addToCart = (product) => {
+    setCart([...cart, product])
+  }
+  
+  const clearCart = () => {
+    setCart([])
+  }
+  
+  return (
+    <div>
+      <p>تعداد محصولات: {cart.length}</p>
+      <button onClick={clearCart}>خالی کردن سبد</button>
+    </div>
+  )
+}

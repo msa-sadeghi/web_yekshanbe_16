@@ -1,62 +1,137 @@
-const ProductCard = React.memo(({ product, onAddToCart }) => {
-  console.log('ProductCard rendered:', product.id)
-  
-  return (
-    <div className="product-card">
-      <img src={product.image} alt={product.name} />
-      <h3>{product.name}</h3>
-      <p>{product.price.toLocaleString('fa-IR')} تومان</p>
-      <button onClick={() => onAddToCart(product)}>
-        افزودن به سبد
-      </button>
-    </div>
-  )
-})
+import { createContext, useContext, useState, useEffect } from 'react'
 
-// لیست محصولات
-function ProductList() {
-  const [products, setProducts] = useState([])
-  const [cart, setCart] = useState([])
-  const [filter, setFilter] = useState('all')
+const AuthContext = createContext()
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   
-  // دریافت محصولات
+  // بررسی session هنگام mount
   useEffect(() => {
-    fetch('/api/products')
-      .then(res => res.json())
-      .then(setProducts)
+    const checkAuth = async () => {
+      try {
+        const savedUser = localStorage.getItem('user')
+        if (savedUser) {
+          setUser(JSON.parse(savedUser))
+        }
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+    
+    checkAuth()
   }, [])
   
-  // فیلتر با useMemo
-  const filteredProducts = useMemo(() => {
-    if (filter === 'all') return products
-    return products.filter(p => p.category === filter)
-  }, [products, filter])
+  // ورود
+  const login = async (email, password) => {
+    setLoading(true)
+    setError(null)
+    
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+      
+      if (!response.ok) {
+        throw new Error('ورود ناموفق بود')
+      }
+      
+      const userData = await response.json()
+      setUser(userData)
+      localStorage.setItem('user', JSON.stringify(userData))
+      
+      return { success: true }
+    } catch (err) {
+      setError(err.message)
+      return { success: false, error: err.message }
+    } finally {
+      setLoading(false)
+    }
+  }
   
-  // تابع افزودن با useCallback
-  const handleAddToCart = useCallback((product) => {
-    setCart(prev => [...prev, product])
-    alert(`${product.name} به سبد اضافه شد`)
-  }, [])
+  // ثبت‌نام
+  const register = async (name, email, password) => {
+    setLoading(true)
+    setError(null)
+    
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      })
+      
+      if (!response.ok) {
+        throw new Error('ثبت‌نام ناموفق بود')
+      }
+      
+      const userData = await response.json()
+      setUser(userData)
+      localStorage.setItem('user', JSON.stringify(userData))
+      
+      return { success: true }
+    } catch (err) {
+      setError(err.message)
+      return { success: false, error: err.message }
+    } finally {
+      setLoading(false)
+    }
+  }
+  
+  // خروج
+  const logout = () => {
+    setUser(null)
+    localStorage.removeItem('user')
+  }
+  
+  // به‌روزرسانی پروفایل
+  const updateProfile = async (updates) => {
+    try {
+      const response = await fetch('/api/user/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates)
+      })
+      
+      const updatedUser = await response.json()
+      setUser(updatedUser)
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+      
+      return { success: true }
+    } catch (err) {
+      setError(err.message)
+      return { success: false, error: err.message }
+    }
+  }
+  
+  const value = {
+    user,
+    loading,
+    error,
+    login,
+    register,
+    logout,
+    updateProfile,
+    isAuthenticated: !!user
+  }
   
   return (
-    <div>
-      <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-        <option value="all">همه محصولات</option>
-        <option value="laptop">لپ‌تاپ</option>
-        <option value="phone">گوشی</option>
-      </select>
-      
-      <p>تعداد در سبد: {cart.length}</p>
-      
-      <div className="product-grid">
-        {filteredProducts.map(product => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onAddToCart={handleAddToCart}
-          />
-        ))}
-      </div>
-    </div>
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
   )
+}
+
+// Custom Hook
+export function useAuth() {
+  const context = useContext(AuthContext)
+  if (!context) {
+    throw new Error('useAuth must be used within AuthProvider')
+  }
+  return context
 }

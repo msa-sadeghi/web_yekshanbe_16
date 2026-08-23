@@ -1,23 +1,44 @@
-import { useMemo, useState } from "react";
+import { createContext, useContext, useState } from "react";
+const UserContext = createContext();
+
 function App() {
-  const [count, setCount] = useState(0);
-  const [search, setSearch] = useState("");
-
-  const numbers = Array.from({ length: 100000 }, (_, index) => index);
-  
-  const evenNumbers = useMemo(()=>{
-    return numbers.filter((number) => number % 2 === 0);
-  },  [numbers])
-
+  const [user, setUser] = useState({
+    name: "amir",
+    role: "admin",
+  });
   return (
     <>
-      <button onClick={() => setCount(count + 1)}>Count: {count}</button>
-
-      <input value={search} onChange={(e) => setSearch(e.target.value)} />
-
-      <p>تعداد اعداد زوج: {evenNumbers.length}</p>
+      <UserContext.Provider value={{ user, setUser }}>
+        <Layout />
+      </UserContext.Provider>
     </>
   );
 }
 
 export default App;
+
+function Layout() {
+  return (
+    <>
+      <Header />
+      <Sidebar />
+    </>
+  );
+}
+
+function Header() {
+  return <UserMenu />;
+}
+function Sidebar() {
+  return <h3>Sidebar</h3>;
+}
+
+function UserMenu() {
+  const { user, setUser } = useContext(UserContext);
+  return (
+    <div>
+      <h2>{user.name}</h2>
+      <button onClick={() => setUser(null)}>Logout</button>
+    </div>
+  );
+}

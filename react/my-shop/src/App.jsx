@@ -1,44 +1,18 @@
-import { createContext, useContext, useState } from "react";
-const UserContext = createContext();
-
+import { Route, Routes } from "react-router-dom";
+import About from "./compontents/About";
+import Home from "./compontents/Home";
+import Layout from "./compontents/Layout";
+import Products from "./compontents/Products";
 function App() {
-  const [user, setUser] = useState({
-    name: "amir",
-    role: "admin",
-  });
   return (
-    <>
-      <UserContext.Provider value={{ user, setUser }}>
-        <Layout />
-      </UserContext.Provider>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/about" element={<About />} />
+      </Route>
+    </Routes>
   );
 }
 
 export default App;
-
-function Layout() {
-  return (
-    <>
-      <Header />
-      <Sidebar />
-    </>
-  );
-}
-
-function Header() {
-  return <UserMenu />;
-}
-function Sidebar() {
-  return <h3>Sidebar</h3>;
-}
-
-function UserMenu() {
-  const { user, setUser } = useContext(UserContext);
-  return (
-    <div>
-      <h2>{user.name}</h2>
-      <button onClick={() => setUser(null)}>Logout</button>
-    </div>
-  );
-}
